@@ -1,0 +1,23 @@
+{
+    "theme": "dark",
+    "window": {
+        "width": 1920,
+        "height": 1080,
+        "maximized": true
+    },
+    "charts": {
+        "default_timeframe": "1h",
+        "update_interval": 1000,
+        "style": "candlestick"
+    },
+    "panels": {
+        "position_panel": {
+            "visible": true,
+            "position": "right"
+        },
+        "order_panel": {
+            "visible": true,
+            "position": "bottom"
+        }
+    }
+}

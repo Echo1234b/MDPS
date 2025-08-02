@@ -1,0 +1,22 @@
+{
+    "data_sources": {
+        "mt5": {
+            "enabled": true,
+            "server": "your-broker-server",
+            "login": "your-login",
+            "password": "your-password"
+        },
+        "exchanges": {
+            "binance": {
+                "enabled": true,
+                "api_key": "",
+                "api_secret": ""
+            }
+        }
+    },
+    "data_processing": {
+        "update_interval": 1000,
+        "buffer_size": 10000,
+        "archive_enabled": true
+    }
+}

@@ -1,0 +1,303 @@
+MDPS/
+├── __init__.py
+├── main.py
+├── config.py
+├── setup.py
+├── requirements.txt
+├── .env
+│
+├── Data_Collection_Acquisition/
+│   ├── __init__.py
+│   ├── data_manager.py
+│   ├── data_connectivity_feed_integration/
+│   │   ├── __init__.py
+│   │   ├── mt5_connector.py
+│   │   ├── exchange_api_manager.py
+│   │   ├── tick_data_collector.py
+│   │   ├── bid_ask_streamer.py
+│   │   ├── live_price_feed.py
+│   │   ├── volume_feed_integrator.py
+│   │   ├── volatility_tracker.py
+│   │   ├── orderbook_snapshotter.py
+│   │   └── ohlcv_extractor.py
+│   ├── time_handling_candle_construction/
+│   │   ├── __init__.py
+│   │   ├── time_sync_engine.py
+│   │   ├── drift_monitor.py
+│   │   ├── candle_constructor.py
+│   │   └── adaptive_sampler.py
+│   ├── data_validation_integrity_assurance/
+│   │   ├── __init__.py
+│   │   ├── feed_validator.py
+│   │   ├── anomaly_detector.py
+│   │   ├── integrity_logger.py
+│   │   └── source_tagger.py
+│   ├── data_storage_profiling/
+│   │   ├── __init__.py
+│   │   ├── data_buffer.py
+│   │   ├── data_archiver.py
+│   │   └── data_profiler.py
+│   └── pipeline_orchestration/
+│       ├── __init__.py
+│       ├── pipeline_scheduler.py
+│       └── monitoring_system.py
+│
+├── Data_Cleaning_Signal_Processing/
+│   ├── __init__.py
+│   ├── data_quality_assurance/
+│   │   ├── __init__.py
+│   │   ├── missing_value_handler.py
+│   │   ├── duplicate_remover.py
+│   │   ├── outlier_detector.py
+│   │   └── data_sanitizer.py
+│   ├── temporal_structural_alignment/
+│   │   ├── __init__.py
+│   │   ├── timestamp_normalizer.py
+│   │   ├── temporal_adjuster.py
+│   │   └── frequency_converter.py
+│   ├── noise_signal_treatment/
+│   │   ├── __init__.py
+│   │   ├── noise_filter.py
+│   │   ├── data_smoother.py
+│   │   ├── signal_weighter.py
+│   │   ├── signal_decomposer.py
+│   │   ├── zscore_normalizer.py
+│   │   └── volume_normalizer.py
+│   └── contextual_structural_annotation/
+│       ├── __init__.py
+│       ├── price_action_annotator.py
+│       ├── market_phase_classifier.py
+│       ├── event_mapper.py
+│       └── context_enricher.py
+│
+├── Preprocessing_Feature_Engineering/
+│   ├── __init__.py
+│   ├── technical_indicators/
+│   │   ├── __init__.py
+│   │   ├── indicator_generator.py
+│   │   ├── momentum_calculator.py
+│   │   ├── trend_analyzer.py
+│   │   ├── volatility_mapper.py
+│   │   └── ratio_calculator.py
+│   ├── contextual_temporal_encoders/
+│   │   ├── __init__.py
+│   │   ├── time_encoder.py
+│   │   ├── session_tracker.py
+│   │   └── regime_tagger.py
+│   ├── multi_scale_features/
+│   │   ├── __init__.py
+│   │   ├── timeframe_merger.py
+│   │   ├── lag_engine.py
+│   │   └── window_generator.py
+│   └── feature_processing/
+│       ├── __init__.py
+│       ├── feature_generator.py
+│       ├── feature_selector.py
+│       └── feature_versioning.py
+│
+├── Advanced_Chart_Analysis_Tools/
+│   ├── __init__.py
+│   ├── elliott_wave_tools/
+│   │   ├── __init__.py
+│   │   ├── wave_analyzer.py
+│   │   └── wave_classifier.py
+│   ├── harmonic_pattern_tools/
+│   │   ├── __init__.py
+│   │   ├── pattern_identifier.py
+│   │   └── pattern_scanner.py
+│   ├── fibonacci_geometric_tools/
+│   │   ├── __init__.py
+│   │   ├── fibonacci_calculator.py
+│   │   └── gann_analyzer.py
+│   └── chart_pattern_detection/
+│       ├── __init__.py
+│       ├── pattern_recognizer.py
+│       └── channel_mapper.py
+│
+├── Market_Context_Structural_Analysis/
+│   ├── __init__.py
+│   ├── key_zones_levels/
+│   │   ├── __init__.py
+│   │   ├── support_resistance_detector.py
+│   │   ├── pivot_tracker.py
+│   │   └── supply_demand_identifier.py
+│   ├── liquidity_volume_structure/
+│   │   ├── __init__.py
+│   │   ├── liquidity_mapper.py
+│   │   └── volume_analyzer.py
+│   └── trend_structure_market_regime/
+│       ├── __init__.py
+│       ├── regime_classifier.py
+│       ├── structure_analyzer.py
+│       └── swing_detector.py
+│
+├── External_Factors_Integration/
+│   ├── __init__.py
+│   ├── news_economic_events/
+│   │   ├── __init__.py
+│   │   ├── news_analyzer.py
+│   │   ├── calendar_parser.py
+│   │   └── impact_estimator.py
+│   ├── social_crypto_sentiment/
+│   │   ├── __init__.py
+│   │   ├── sentiment_tracker.py
+│   │   ├── social_scraper.py
+│   │   └── sentiment_aggregator.py
+│   ├── blockchain_onchain_analytics/
+│   │   ├── __init__.py
+│   │   ├── blockchain_analyzer.py
+│   │   └── onchain_fetcher.py
+│   └── market_microstructure/
+│       ├── __init__.py
+│       ├── depth_analyzer.py
+│       └── correlation_tracker.py
+│
+├── Prediction_Engine/
+│   ├── __init__.py
+│   ├── models/
+│   │   ├── __init__.py
+│   │   ├── traditional_ml/
+│   │   │   ├── xgboost_model.py
+│   │   │   ├── random_forest_model.py
+│   │   │   └── cross_validator.py
+│   │   ├── sequence_models/
+│   │   │   ├── lstm_predictor.py
+│   │   │   ├── gru_model.py
+│   │   │   └── attention_rnn.py
+│   │   ├── cnn_models/
+│   │   │   ├── signal_extractor.py
+│   │   │   └── image_encoder.py
+│   │   └── transformer_models/
+│   │       ├── transformer_integrator.py
+│   │       └── meta_learner.py
+│   └── training/
+│       ├── __init__.py
+│       ├── trainer.py
+│       ├── evaluator.py
+│       └── model_manager.py
+│
+├── Strategy_Decision_Layer/
+│   ├── __init__.py
+│   ├── signal_validation/
+│   │   ├── __init__.py
+│   │   ├── signal_validator.py
+│   │   └── confidence_scorer.py
+│   ├── risk_management/
+│   │   ├── __init__.py
+│   │   ├── risk_manager.py
+│   │   ├── position_sizer.py
+│   │   └── stop_generator.py
+│   ├── strategy_selection/
+│   │   ├── __init__.py
+│   │   ├── strategy_selector.py
+│   │   └── rule_system.py
+│   └── execution/
+│       ├── __init__.py
+│       ├── order_executor.py
+│       └── timing_optimizer.py
+
+
+
+
+
+
+
+
+trading_system/
+├── __init__.py
+├── main.py
+├── requirements.txt
+├── config/
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── system_config.json
+│   └── ui_config.json
+├── core/
+│   ├── __init__.py
+│   ├── data_manager.py
+│   ├── market_data.py
+│   └── event_system.py
+│   ├── data_collection/
+│   │   ├── __init__.py
+│   │   ├── mt5_connector.py
+│   │   ├── exchange_api.py
+│   │   ├── tick_data.py
+│   │   └── order_book.py
+│   ├── data_processing/
+│   │   ├── __init__.py
+│   │   ├── cleaning.py
+│   │   ├── validation.py
+│   │   ├── feature_engineering.py
+│   │   └── pattern_recognition.py
+│   ├── prediction_engine/
+│   │   ├── __init__.py
+│   │   ├── ml_models/
+│   │   ├── sequence_models/
+│   │   ├── ensemble_models/
+│   │   └── rl_models/
+│   └── storage/
+│       ├── __init__.py
+│       ├── data_buffer.py
+│       ├── raw_archive.py
+│       └── profiler.py
+├── ui/
+│   ├── __init__.py
+│   ├── main_window.py
+│   ├── views/
+│   │   ├── __init__.py
+│   │   ├── market_view.py
+│   │   ├── technical_view.py
+│   │   ├── trading_view.py
+│   │   └── analytics_view.py
+│   ├── widgets/
+│   │   ├── __init__.py
+│   │   ├── charts/
+│   │   │   ├── __init__.py
+│   │   │   ├── price_chart.py
+│   │   │   ├── orderbook_chart.py
+│   │   │   └── volume_profile.py
+│   │   ├── panels/
+│   │   │   ├── __init__.py
+│   │   │   ├── position_panel.py
+│   │   │   ├── order_panel.py
+│   │   │   └── risk_panel.py
+│   │   ├── tables/
+│   │   │   ├── __init__.py
+│   │   │   ├── market_table.py
+│   │   │   └── trade_table.py
+│   │   └── dialogs/
+│   │       ├── __init__.py
+│   │       ├── settings_dialog.py
+│   │       └── order_dialog.py
+│   ├── resources/
+│   │   ├── __init__.py
+│   │   ├── styles.qss
+│   │   └── icons/
+│   └── utils/
+│       ├── __init__.py
+│       ├── chart_utils.py
+│       └── ui_utils.py
+├── data/
+│   ├── __init__.py
+│   ├── database.py
+│   ├── cache.py
+│   └── models/
+│       ├── __init__.py
+│       ├── market_model.py
+│       └── trade_model.py
+├── services/
+│   ├── __init__.py
+│   ├── data_service.py
+│   ├── trading_service.py
+│   └── notification_service.py
+├── utils/
+│   ├── __init__.py
+│   ├── logger.py
+│   ├── helpers.py
+│   └── constants.py
+└── tests/
+    ├── __init__.py
+    ├── test_ui/
+    ├── test_core/
+    ├── test_data/
+    └── test_services/
