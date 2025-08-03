@@ -3,6 +3,14 @@ MDPS Main Entry Point
 Demonstrates the integration and workflow of all MDPS components.
 """
 
+import sys
+import logging
+from pathlib import Path
+
+# Add project root to path
+project_root = Path(__file__).parent
+sys.path.insert(0, str(project_root))
+
 from . import (
     DataCollector,
     DataCleaner,
@@ -14,11 +22,50 @@ from . import (
     StrategyManager
 )
 from .config import MDPSConfig
-from .Data_Collection_Acquisition.data_manager import DataManager
-from .Strategy_Decision_Layer.results_handler import ResultsHandler
+
+# Try to import data manager, create placeholder if not available
+try:
+    from .Data_Collection_and_Acquisition.data_manager import DataManager
+except ImportError:
+    logging.warning("DataManager not found - creating placeholder")
+    class DataManager:
+        def __init__(self, config):
+            self.config = config
+            self.data_dir = Path("data")
+            self.data_dir.mkdir(exist_ok=True)
+        
+        def save_data(self, data, data_type, symbol, timeframe):
+            logging.info(f"DataManager placeholder - saving {data_type} data for {symbol} {timeframe}")
+            # Save to CSV for basic functionality
+            filename = f"{symbol}_{timeframe}_{data_type}.csv"
+            filepath = self.data_dir / filename
+            try:
+                data.to_csv(filepath, index=False)
+                logging.info(f"Data saved to {filepath}")
+            except Exception as e:
+                logging.error(f"Error saving data: {e}")
+
+# Try to import results handler, create placeholder if not available
+try:
+    from .Strategy_Decision_Layer.results_handler import ResultsHandler
+except ImportError:
+    logging.warning("ResultsHandler not found - creating placeholder")
+    class ResultsHandler:
+        def __init__(self, config):
+            self.config = config
+            self.results_dir = Path("results")
+            self.results_dir.mkdir(exist_ok=True)
+        
+        def save_trading_signals(self, signals, symbol, timeframe):
+            logging.info(f"ResultsHandler placeholder - saving signals for {symbol} {timeframe}")
+            return True
+        
+        def generate_charts(self, data, patterns, predictions, symbol, timeframe):
+            logging.info(f"ResultsHandler placeholder - generating charts for {symbol} {timeframe}")
+            return True
+
 import time
 from datetime import datetime, timedelta
-import logging
 
 class MDPS:
     def __init__(self):
@@ -42,6 +89,8 @@ class MDPS:
     def initialize(self):
         """Initialize all system components"""
         try:
+            logging.info("MDPS: Starting system initialization")
+            
             # Start data collection
             self.data_collector.initialize_feeds()
             
@@ -53,14 +102,16 @@ class MDPS:
             # Start strategy manager
             self.strategy_manager.initialize()
             
-            logging.info("System initialized successfully")
+            logging.info("MDPS: System initialized successfully")
         except Exception as e:
-            logging.error(f"Initialization error: {e}")
+            logging.error(f"MDPS: Initialization error: {e}")
             raise
     
     def process_market_data(self, symbols, timeframe):
         """Main processing pipeline"""
         try:
+            logging.info(f"MDPS: Starting processing pipeline for {symbols} at {timeframe}")
+            
             # 1. Collect data
             raw_data = self.data_collector.collect_data(symbols, timeframe)
             self.data_manager.save_data(raw_data, "raw", symbols[0], timeframe)
@@ -101,6 +152,8 @@ class MDPS:
             self.results_handler.save_trading_signals(signals, symbols[0], timeframe)
             self.results_handler.generate_charts(clean_data, chart_patterns, predictions, symbols[0], timeframe)
             
+            logging.info(f"MDPS: Processing pipeline completed successfully")
+            
             # Return the processed results
             return {
                 'signals': signals,
@@ -110,11 +163,12 @@ class MDPS:
             }
             
         except Exception as e:
-            logging.error(f"Error in processing pipeline: {e}")
+            logging.error(f"MDPS: Error in processing pipeline: {e}")
             raise
         
     def run(self, symbols, timeframe, update_interval=300):  # 5 minutes default
         """Run the entire system"""
+        logging.info(f"MDPS: Starting main system loop")
         self.initialize()
         
         while True:
@@ -125,30 +179,46 @@ class MDPS:
                 results = self.process_market_data(symbols, timeframe)
                 
                 # Log results summary
-                logging.info(f"Processed {symbols} at {timeframe} timeframe")
+                logging.info(f"MDPS: Processed {symbols} at {timeframe} timeframe - Signal: {results['signals'].get('signal', 'none')}")
                 
                 # Calculate wait time for next update
                 processing_time = time.time() - start_time
                 wait_time = max(0, update_interval - processing_time)
                 
+                logging.info(f"MDPS: Processing took {processing_time:.2f}s, waiting {wait_time:.2f}s for next cycle")
                 time.sleep(wait_time)
                 
+            except KeyboardInterrupt:
+                logging.info("MDPS: Shutdown requested by user")
+                break
             except Exception as e:
-                logging.error(f"Error in main loop: {e}")
+                logging.error(f"MDPS: Error in main loop: {e}")
                 time.sleep(60)  # Wait before retrying
 
 def main():
+    # Setup logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+        handlers=[
+            logging.StreamHandler(),
+            logging.FileHandler('mdps.log')
+        ]
+    )
+    
     # Configuration
     symbols = ["EURUSD", "GBPUSD", "USDJPY"]
     timeframe = "M5"
     update_interval = 300  # 5 minutes
+    
+    logging.info("MDPS: Starting Market Data Processing System")
     
     # Create and run MDPS instance
     try:
         mdps = MDPS()
         mdps.run(symbols, timeframe, update_interval)
     except Exception as e:
-        logging.critical(f"System failure: {e}")
+        logging.critical(f"MDPS: System failure: {e}")
         raise
 
 if __name__ == "__main__":
