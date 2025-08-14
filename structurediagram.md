@@ -95,90 +95,218 @@ MDPS/
 │   │   │     • Input: Monitoring reports, error/warning notifications
 │   │   │     • Output: Alerts, notifications, escalation logs
 │   ├── 1.7 data_manager.py                  # إدارة البيانات المركزية للقسم
+│   │     • Input: Processed and validated data from previous modules, data update requests
+│   │     • Output: Managed data storage, data retrieval responses, update logs
 │   ├── 1.8 validation.py                    # التحقق النهائي من البيانات بعد جميع مراحل المعالجة
+│   │     • Input: Final processed data, validation rules, integrity checks
+│   │     • Output: Validation status, error/warning reports, validation logs
 │   ├── 1.9 api_interface.py                 # واجهة التكامل مع الأقسام الأخرى لتبادل البيانات
+│   │     • Input: Data exchange requests, integration protocol messages
+│   │     • Output: API responses, data packets, integration logs
 │   ├── 1.10 event_bus.py                    # نظام الأحداث الداخلي لتبادل الإشعارات والبيانات
+│   │     • Input: Event notifications, data change events, system alerts
+│   │     • Output: Event dispatches, notification broadcasts, event logs
 │   ├── 1.11 integration_protocols/          # بروتوكولات التكامل مع الأنظمة الخارجية
 │   │   ├── 1.11.1 rest_api_protocol.py
+│   │   │     • Input: REST API requests, authentication tokens, payload data
+│   │   │     • Output: API responses, status codes, error messages, integration logs
 │   │   ├── 1.11.2 websocket_protocol.py
+│   │   │     • Input: WebSocket connection requests, streaming data, authentication tokens
+│   │   │     • Output: Real-time data streams, connection status, error messages, integration logs
 │   │   ├── 1.11.3 custom_integration_adapter.py
+│   │   │     • Input: Custom integration requests, protocol-specific data, configuration parameters
+│   │   │     • Output: Adapted data packets, integration responses, error messages, adapter logs
 │   ├── 1.12 monitoring.py                   # مراقبة أداء القسم وتسجيل الأحداث
+│   │     • Input: System performance metrics, event logs, error/warning reports, resource usage data
+│   │     • Output: Monitoring dashboards, performance reports, alert notifications, monitoring logs
 │   ├── 1.13 extensibility.md                # توثيق نقاط التوسع والتكامل مع باقي النظام
 │   # Practical integration and extensibility files added to increase scalability and integration with the rest of the system
 │
 ├── 2. External Factors Integration/
-│   ├── 2.1 BlockchainAndOnChainAnalytics/
-│   │   ├── 2.1.1 BitcoinHashrateAnalyzer.py
-│   │   ├── 2.1.2 GeopoliticalRiskIndex.py
-│   │   ├── 2.1.3 OnChainDataFetcher.py
-│   │   ├── 2.1.4 WhaleActivityTracker.py
-│   ├── 2.2 MarketMicrostructureAndCorrelations/
-│   │   ├── 2.2.1 CorrelatedAssetTracker.py
-│   │   ├── 2.2.2 GoogleTrendsAPIIntegration.py
-│   │   ├── 2.2.3 MarketDepthAndOrderBookAnalyzer.py
-│   ├── 2.3 NewsAndEconomicEvents/
-│   │   ├── 2.3.1 EconomicCalendarIntegrator.py
-│   │   ├── 2.3.2 EventImpactEstimator.py
-│   │   ├── 2.3.3 HighImpactNewsMapper.py
-│   │   ├── 2.3.4 MacroEconomicIndicatorFeed.py
-│   │   ├── 2.3.5 NewsSentimentAnalyzer.py
-│   ├── 2.4 SocialAndCryptoSentiment/
-│   │   ├── 2.4.1 FearAndGreedIndexReader.py
-│   │   ├── 2.4.2 FundingRateMonitor.py
-│   │   ├── 2.4.3 SentimentAggregator.py
-│   │   ├── 2.4.4 SocialMediaSentimentTracker.py
-│   │   ├── 2.4.5 TwitterCryptoSentimentScraper.py
+│   ├── 2.1 NewsAndEconomicEvents/
+│   │   ├── 2.1.1 EconomicCalendarIntegrator.py
+│   │   │     • Input: Economic calendar data sources, event schedules
+│   │   │     • Output: Integrated economic event feed, event metadata
+│   │   ├── 2.1.2 EventImpactEstimator.py
+│   │   │     • Input: Economic event feed, historical market data
+│   │   │     • Output: Estimated event impact scores, impact reports
+│   │   ├── 2.1.3 HighImpactNewsMapper.py
+│   │   │     • Input: News feeds, event impact scores
+│   │   │     • Output: Mapped high-impact news events, mapping logs
+│   │   ├── 2.1.4 MacroEconomicIndicatorFeed.py
+│   │   │     • Input: Macro-economic indicator sources, data APIs
+│   │   │     • Output: Macro indicator feed, indicator logs
+│   │   ├── 2.1.5 NewsSentimentAnalyzer.py
+│   │   │     • Input: News articles, headlines, mapped news events
+│   │   │     • Output: News sentiment scores, sentiment analysis reports
+│   ├── 2.2 SocialAndCryptoSentiment/
+│   │   ├── 2.2.1 FearAndGreedIndexReader.py
+│   │   │     • Input: Fear and Greed index sources, market data
+│   │   │     • Output: Index values, sentiment trend logs
+│   │   ├── 2.2.2 FundingRateMonitor.py
+│   │   │     • Input: Funding rate feeds, exchange APIs
+│   │   │     • Output: Funding rate metrics, funding logs
+│   │   ├── 2.2.3 SentimentAggregator.py
+│   │   │     • Input: Sentiment scores from multiple sources
+│   │   │     • Output: Aggregated sentiment index, aggregation logs
+│   │   ├── 2.2.4 SocialMediaSentimentTracker.py
+│   │   │     • Input: Social media feeds, crypto forums, hashtags
+│   │   │     • Output: Social sentiment scores, tracking reports
+│   │   ├── 2.2.5 TwitterCryptoSentimentScraper.py
+│   │   │     • Input: Twitter API, crypto-related keywords
+│   │   │     • Output: Scraped tweets, sentiment analysis results
+│   ├── 2.3 MarketMicrostructureAndCorrelations/
+│   │   ├── 2.3.1 CorrelatedAssetTracker.py
+│   │   │     • Input: Asset price feeds, correlation data sources
+│   │   │     • Output: Correlation metrics, correlated asset lists
+│   │   ├── 2.3.2 GoogleTrendsAPIIntegration.py
+│   │   │     • Input: Google Trends API, search keywords
+│   │   │     • Output: Trend metrics, trend analysis reports
+│   │   ├── 2.3.3 MarketDepthAndOrderBookAnalyzer.py
+│   │   │     • Input: Market depth feeds, order book data
+│   │   │     • Output: Depth analysis, order book metrics
+│   ├── 2.4 BlockchainAndOnChainAnalytics/
+│   │   ├── 2.4.1 BitcoinHashrateAnalyzer.py
+│   │   │     • Input: Blockchain hashrate feeds, mining pool APIs
+│   │   │     • Output: Hashrate metrics, mining activity logs
+│   │   ├── 2.4.2 GeopoliticalRiskIndex.py
+│   │   │     • Input: Geopolitical event data, risk sources
+│   │   │     • Output: Risk index values, risk analysis reports
+│   │   ├── 2.4.3 OnChainDataFetcher.py
+│   │   │     • Input: On-chain data APIs, blockchain explorers
+│   │   │     • Output: On-chain metrics, transaction logs
+│   │   ├── 2.4.4 WhaleActivityTracker.py
+│   │   │     • Input: Large transaction feeds, whale alert APIs
+│   │   │     • Output: Whale activity reports, transaction summaries
 │   ├── 2.5 TimeWeightedEventImpactModel/
 │   │   ├── 2.5.1 EventImpactTimeDecayModel.py
+│   │   │     • Input: Event impact scores, time series data
+│   │   │     • Output: Time-decayed impact metrics, decay logs
 │   │   ├── 2.5.2 ImpactWeightCalculator.py
+│   │   │     • Input: Decayed impact metrics, event metadata
+│   │   │     • Output: Weighted impact scores, calculation logs
 │   ├── 2.6 data_manager.py          # Local data management for the section
+│   │     • Input: Processed external factors data, update requests
+│   │     • Output: Managed data storage, retrieval responses, update logs
 │   ├── 2.7 validation.py            # Local data validation for the section
+│   │     • Input: Final processed data, validation rules, integrity checks
+│   │     • Output: Validation status, error/warning reports, validation logs
 │   ├── 2.8 api_interface.py         # API interface for integration with the rest of the system
+│   │     • Input: Data exchange requests, integration protocol messages
+│   │     • Output: API responses, data packets, integration logs
 │   ├── 2.9 event_bus.py             # Internal event bus for notifications and data exchange
+│   │     • Input: Event notifications, data change events, system alerts
+│   │     • Output: Event dispatches, notification broadcasts, event logs
 │   ├── 2.10 integration_protocols/  # Integration protocols with external systems
 │   │   ├── 2.10.1 rest_api_protocol.py
+│   │   │     • Input: REST API requests, authentication tokens, payload data
+│   │   │     • Output: API responses, status codes, error messages, integration logs
 │   │   ├── 2.10.2 websocket_protocol.py
+│   │   │     • Input: WebSocket connection requests, streaming data, authentication tokens
+│   │   │     • Output: Real-time data streams, connection status, error messages, integration logs
 │   │   ├── 2.10.3 custom_integration_adapter.py
+│   │   │     • Input: Custom integration requests, protocol-specific data, configuration parameters
+│   │   │     • Output: Adapted data packets, integration responses, error messages, adapter logs
 │   ├── 2.11 monitoring.py           # Section performance monitoring and event logging
+│   │     • Input: System performance metrics, event logs, error/warning reports, resource usage data
+│   │     • Output: Monitoring dashboards, performance reports, alert notifications, monitoring logs
 │   ├── 2.12 extensibility.md        # Documentation of extensibility and integration points with other sections
 │   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │   └── 2.13 @integration.py
 │
 ├── 3. Data Cleaning & Signal Processing/
-│   ├── 3.1 Clean.py
-│   ├── 3.2 MDPS.md
-│   ├── 3.3 __init__.py
-│   ├── 3.4 config.py
-│   ├── 3.5 contextual_structural_annotation.py
-│   ├── 3.6 data_quality_assurance.py
-│   ├── 3.7 data_quality_monitoring.py
-│   ├── 3.8 main.py
-│   ├── 3.9 noise_signal_treatment.py
-│   ├── 3.10 temporal_structural_alignment.py
+│   ├── 3.1 __init__.py
+│   │     • Input: None (initialization)
+│   │     • Output: Initializes module, sets up imports
+│   ├── 3.2 config.py
+│   │     • Input: Configuration parameters, system settings
+│   │     • Output: Configured settings, config logs
+│   ├── 3.3 Clean.py
+│   │     • Input: Raw collected data, cleaning rules
+│   │     • Output: Cleaned data, cleaning logs, error reports
+│   ├── 3.4 contextual_structural_annotation.py
+│   │     • Input: Cleaned data, annotation rules
+│   │     • Output: Annotated data, annotation logs
+│   ├── 3.5 data_quality_assurance.py
+│   │     • Input: Annotated data, quality metrics
+│   │     • Output: Quality assurance reports, quality flags
+│   ├── 3.6 data_quality_monitoring.py
+│   │     • Input: Quality assurance reports, data streams
+│   │     • Output: Quality monitoring dashboards, alerts
+│   ├── 3.7 noise_signal_treatment.py
+│   │     • Input: Data streams, noise detection rules
+│   │     • Output: Noise-reduced data, noise treatment logs
+│   ├── 3.8 temporal_structural_alignment.py
+│   │     • Input: Noise-reduced data, time alignment rules
+│   │     • Output: Aligned data, alignment logs
+│   ├── 3.9 main.py
+│   │     • Input: Section configuration, entry parameters
+│   │     • Output: Section execution, main logs
+│   ├── 3.10 MDPS.md
+│   │     • Input: Documentation updates, section changes
+│   │     • Output: Updated documentation, doc logs
 │   ├── 3.11 data_manager.py         # Local data management for the section
+│   │     • Input: Processed and validated data from previous modules, data update requests
+│   │     • Output: Managed data storage, data retrieval responses, update logs
 │   ├── 3.12 validation.py           # Local data validation for the section
+│   │     • Input: Final processed data, validation rules, integrity checks
+│   │     • Output: Validation status, error/warning reports, validation logs
 │   ├── 3.13 api_interface.py        # API interface for integration with the rest of the system
+│   │     • Input: Data exchange requests, integration protocol messages
+│   │     • Output: API responses, data packets, integration logs
 │   ├── 3.14 event_bus.py            # Internal event bus for notifications and data exchange
+│   │     • Input: Event notifications, data change events, system alerts
+│   │     • Output: Event dispatches, notification broadcasts, event logs
 │   ├── 3.15 integration_protocols/  # Integration protocols with external systems
 │   │   ├── 3.15.1 rest_api_protocol.py
+│   │   │     • Input: REST API requests, authentication tokens, payload data
+│   │   │     • Output: API responses, status codes, error messages, integration logs
 │   │   ├── 3.15.2 websocket_protocol.py
+│   │   │     • Input: WebSocket connection requests, streaming data, authentication tokens
+│   │   │     • Output: Real-time data streams, connection status, error messages, integration logs
 │   │   ├── 3.15.3 custom_integration_adapter.py
+│   │   │     • Input: Custom integration requests, protocol-specific data, configuration parameters
+│   │   │     • Output: Adapted data packets, integration responses, error messages, adapter logs
 │   ├── 3.16 monitoring.py           # Section performance monitoring and event logging
+│   │     • Input: System performance metrics, event logs, error/warning reports, resource usage data
+│   │     • Output: Monitoring dashboards, performance reports, alert notifications, monitoring logs
 │   ├── 3.17 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   │     • Input: Documentation updates, extensibility requests
+│   │     • Output: Updated extensibility documentation, integration points
 │   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 4. Preprocessing & Feature Engineering/
 │   ├── 4.1 indicators/
 │   │   ├── 4.1.1 technical_indicators.py
+│   │   │     • Input: Price data, volume data, time series
+│   │   │     • Output: Technical indicator values (e.g., MA, RSI, MACD), indicator logs
 │   │   ├── 4.1.2 momentum_calculator.py
+│   │   │     • Input: Price data, time intervals
+│   │   │     • Output: Momentum scores, momentum trend logs
 │   │   ├── 4.1.3 trend_strength_analyzer.py
+│   │   │     • Input: Price data, trend signals
+│   │   │     • Output: Trend strength metrics, analysis reports
 │   │   ├── 4.1.4 volatility_band_mapper.py
+│   │   │     • Input: Price data, volatility metrics
+│   │   │     • Output: Volatility bands, band mapping logs
 │   │   ├── 4.1.5 ratio_spread_calculator.py
+│   │   │     • Input: Price ratios, spread data
+│   │   │     • Output: Ratio/spread values, calculation logs
 │   │   ├── 4.1.6 cycle_strength_analyzer.py
+│   │   │     • Input: Price cycles, time series data
+│   │   │     • Output: Cycle strength metrics, cycle analysis logs
 │   │   ├── 4.1.7 relative_position_encoder.py
+│   │   │     • Input: Price data, reference levels
+│   │   │     • Output: Encoded relative positions, encoding logs
 │   │   ├── 4.1.8 price_action_density_mapper.py
+│   │   │     • Input: Price action data, density parameters
+│   │   │     • Output: Price action density maps, mapping logs
 │   │   ├── 4.1.9 microstructure_feature_extractor.py
+│   │   │     • Input: Market microstructure data, order book data
+│   │   │     • Output: Microstructure features, extraction logs
 │   │   ├── 4.1.10 market_depth_analyzer.py
+│   │   │     • Input: Market depth data, order book snapshots
+│   │   │     • Output: Depth analysis metrics, analyzer logs
 │   ├── 4.2 encoders/
 │   │   ├── 4.2.1 time_of_day_encoder.py
 │   │   ├── 4.2.2 session_tracker.py
