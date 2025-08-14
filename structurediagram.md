@@ -7,50 +7,103 @@
 MDPS/
 │
 ├── 1. Data_Collection_and_Acquisition/
-│   ├── 1.1 data_connectivity_feed_integration/
+│   ├── 1.1 data_connectivity_feed_integration/   # الربط مع مصادر البيانات الخارجية وجلب البيانات الأولية
 │   │   ├── 1.1.1 __init__.py
-│   │   ├── 1.1.2 bid_ask_streamer.py
-│   │   ├── 1.1.3 exchange_api_manager.py
-│   │   ├── 1.1.4 historical_data_loader.py
+│   │   │     • Input: None (initialization)
+│   │   │     • Output: Initializes module, sets up imports
+│   │   ├── 1.1.2 exchange_api_manager.py
+│   │   │     • Input: API credentials, endpoint configs
+│   │   │     • Output: Raw exchange data streams, error logs
+│   │   ├── 1.1.3 mt5_connection.py
+│   │   │     • Input: MT5 server credentials, connection params
+│   │   │     • Output: MT5 data feed, connection status
+│   │   ├── 1.1.4 bid_ask_streamer.py
+│   │   │     • Input: Exchange data stream
+│   │   │     • Output: Real-time bid/ask prices
 │   │   ├── 1.1.5 live_price_feed.py
-│   │   ├── 1.1.6 metatrader5_connector.py
-│   │   ├── 1.1.7 mt5_connection.py
-│   │   ├── 1.1.8 ohlcv_extractor.py
-│   │   ├── 1.1.9 order_book_snapshotter.py
-│   │   ├── 1.1.10 tick_data_collector.py
-│   │   ├── 1.1.11 volatility_index_tracker.py
-│   │   ├── 1.1.12 volume_feed_integrator.py  
-│   ├── 1.2 data_manager.py          # Main data management for the section
-│   ├── 1.3 data_storage_profiling/
-│   │   ├── 1.3.1 data_buffer_fallback_storage.py
-│   │   ├── 1.3.2 data_source_profiler.py
-│   │   ├── 1.3.3 raw_data_archiver.py
-│   ├── 1.4 data_validation_integrity_assurance/
-│   │   ├── 1.4.1 data_anomaly_detector.py
-│   │   ├── 1.4.2 feed_integrity_logger.py
-│   │   ├── 1.4.3 feed_source_tagger.py
-│   │   ├── 1.4.4 live_feed_validator.py
-│   ├── 1.5 pipeline_orchestration_monitoring/
-│   │   ├── 1.5.1 alert_manager.py
-│   │   ├── 1.5.2 data_pipeline_scheduler.py
-│   │   ├── 1.5.3 pipeline_monitoring_system.py
-│   ├── 1.6 pre_cleaning_preparation/
-│   │   ├── 1.6.1 data_sanitizer.py
-│   ├── 1.7 time_handling_candle_construction/
-│   │   ├── 1.7.1 adaptive_sampling_controller.py
-│   │   ├── 1.7.2 candle_constructor.py
-│   │   ├── 1.7.3 time_drift_monitor.py
-│   │   ├── 1.7.4 time_sync_engine.py
-│   ├── 1.8 __init__.py
-│   ├── 1.9 validation.py            # Main data validation for the section
-│   ├── 1.10 api_interface.py        # API interface for integration with other sections
-│   ├── 1.11 event_bus.py            # Internal event bus for notifications and data exchange
-│   ├── 1.12 integration_protocols/  # Integration protocols with external systems
-│   │   ├── 1.12.1 rest_api_protocol.py
-│   │   ├── 1.12.2 websocket_protocol.py
-│   │   ├── 1.12.3 custom_integration_adapter.py
-│   ├── 1.13 monitoring.py           # Section performance monitoring and event logging
-│   ├── 1.14 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   │   │     • Input: Bid/ask prices, exchange feed
+│   │   │     • Output: Live price ticks, price updates
+│   │   ├── 1.1.6 historical_data_loader.py
+│   │   │     • Input: Data source configs, date range
+│   │   │     • Output: Historical OHLCV/tick data
+│   │   ├── 1.1.7 ohlcv_extractor.py
+│   │   │     • Input: Raw historical data
+│   │   │     • Output: OHLCV formatted data
+│   │   ├── 1.1.8 order_book_snapshotter.py
+│   │   │     • Input: Exchange order book feed
+│   │   │     • Output: Order book snapshots, depth data
+│   │   ├── 1.1.9 tick_data_collector.py
+│   │   │     • Input: Live price feed, tick stream
+│   │   │     • Output: Tick-level data records
+│   │   ├── 1.1.10 volatility_index_tracker.py
+│   │   │     • Input: Price/tick data, external volatility sources
+│   │   │     • Output: Volatility index values
+│   │   ├── 1.1.11 volume_feed_integrator.py
+│   │   │     • Input: Exchange volume data, tick data
+│   │   │     • Output: Integrated volume feed, volume analytics
+│   ├── 1.2 pre_cleaning_preparation/         # تحضير البيانات الأولية قبل أي معالجة أو تنظيف
+│   │   ├── 1.2.1 data_sanitizer.py
+│   │   │     • Input: Raw collected data (from data_connectivity_feed_integration), configuration rules for cleaning
+│   │   │     • Output: Cleaned/prepared data, cleaning logs, error reports
+│   ├── 1.3 data_validation_integrity_assurance/ # التحقق من جودة وسلامة البيانات المجمعة
+│   │   ├── 1.3.1 data_anomaly_detector.py
+│   │   │     • Input: Cleaned/prepared data from pre_cleaning_preparation
+│   │   │     • Output: List of detected anomalies, anomaly reports
+│   │   ├── 1.3.2 live_feed_validator.py
+│   │   │     • Input: Real-time/live data feed, reference validation rules
+│   │   │     • Output: Validation status, error/warning flags, validation logs
+│   │   ├── 1.3.3 feed_source_tagger.py
+│   │   │     • Input: Data records, source metadata
+│   │   │     • Output: Tagged data with source annotations, traceability logs
+│   │   ├── 1.3.4 feed_integrity_logger.py
+│   │   │     • Input: Validation results, anomaly reports, source tags
+│   │   │     • Output: Integrity logs, audit trail, error reports
+│   ├── 1.4 data_storage_profiling/           # تخزين البيانات وتصنيف مصادرها وحفظ النسخ الاحتياطية
+│   │   ├── 1.4.1 data_buffer_fallback_storage.py
+│   │   │     • Input: Validated and annotated data from data_validation_integrity_assurance
+│   │   │     • Output: Buffered data, fallback storage records, temporary storage logs
+│   │   ├── 1.4.2 data_source_profiler.py
+│   │   │     • Input: Buffered data, source metadata
+│   │   │     • Output: Profiled data, source categorization reports, profiling logs
+│   │   ├── 1.4.3 raw_data_archiver.py
+│   │   │     • Input: Profiled data, categorization reports
+│   │   │     • Output: Archived raw data, backup files, archival logs
+│   ├── 1.5 time_handling_candle_construction/ # معالجة الوقت وبناء الشموع الزمنية من البيانات
+│   │   ├── 1.5.1 adaptive_sampling_controller.py
+│   │   │     • Input: Incoming validated data stream
+│   │   │     • Output: Optimized sampled data, sampling logs
+│   │   ├── 1.5.2 candle_constructor.py
+│   │   │     • Input: Synchronized data stream, time intervals
+│   │   │     • Output: Constructed candles (OHLCV/custom), candle logs
+│   │   ├── 1.5.2 time_drift_monitor.py
+│   │   │     • Input: Sampled data, time stamps
+│   │   │     • Output: Time drift reports, drift correction flags
+│   │   ├── 1.5.3 time_sync_engine.py
+│   │   │     • Input: Sampled data, drift reports
+│   │   │     • Output: Synchronized data stream, sync logs
+│   │   ├── 1.5.4 candle_constructor.py
+│   │   │     • Input: Synchronized data stream, time intervals
+│   │   │     • Output: Constructed candles (OHLCV/custom), candle logs
+│   ├── 1.6 pipeline_orchestration_monitoring/ # تنظيم ومراقبة تدفق البيانات عبر خطوط المعالجة
+│   │   ├── 1.6.1 data_pipeline_scheduler.py
+│   │   │     • Input: Pipeline configuration, scheduling rules, task definitions
+│   │   │     • Output: Scheduled pipeline tasks, execution logs, scheduling status
+│   │   ├── 1.6.2 pipeline_monitoring_system.py
+│   │   │     • Input: Running pipeline tasks, execution logs, system metrics
+│   │   │     • Output: Monitoring reports, performance metrics, error/warning notifications
+│   │   ├── 1.6.3 alert_manager.py
+│   │   │     • Input: Monitoring reports, error/warning notifications
+│   │   │     • Output: Alerts, notifications, escalation logs
+│   ├── 1.7 data_manager.py                  # إدارة البيانات المركزية للقسم
+│   ├── 1.8 validation.py                    # التحقق النهائي من البيانات بعد جميع مراحل المعالجة
+│   ├── 1.9 api_interface.py                 # واجهة التكامل مع الأقسام الأخرى لتبادل البيانات
+│   ├── 1.10 event_bus.py                    # نظام الأحداث الداخلي لتبادل الإشعارات والبيانات
+│   ├── 1.11 integration_protocols/          # بروتوكولات التكامل مع الأنظمة الخارجية
+│   │   ├── 1.11.1 rest_api_protocol.py
+│   │   ├── 1.11.2 websocket_protocol.py
+│   │   ├── 1.11.3 custom_integration_adapter.py
+│   ├── 1.12 monitoring.py                   # مراقبة أداء القسم وتسجيل الأحداث
+│   ├── 1.13 extensibility.md                # توثيق نقاط التوسع والتكامل مع باقي النظام
 │   # Practical integration and extensibility files added to increase scalability and integration with the rest of the system
 │
 ├── 2. External Factors Integration/
