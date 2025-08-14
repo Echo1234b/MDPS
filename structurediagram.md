@@ -1,7 +1,7 @@
 #
 # MDPS System Structure Diagram (Full + Decentralized Data Management)
 #
-# نسخة كاملة من المخطط مع دمج تعديلات استقلالية إدارة البيانات والتحقق داخل كل قسم، وحذف الإدارة المركزية.
+# Full version of the diagram with decentralized data and validation management inside each section, and removal of central management.
 
 ```
 MDPS/
@@ -20,7 +20,7 @@ MDPS/
 │   │   ├── 1.1.10 tick_data_collector.py
 │   │   ├── 1.1.11 volatility_index_tracker.py
 │   │   ├── 1.1.12 volume_feed_integrator.py  
-│   ├── 1.2 data_manager.py          # إدارة بيانات رئيسية للقسم
+│   ├── 1.2 data_manager.py          # Main data management for the section
 │   ├── 1.3 data_storage_profiling/
 │   │   ├── 1.3.1 data_buffer_fallback_storage.py
 │   │   ├── 1.3.2 data_source_profiler.py
@@ -42,16 +42,16 @@ MDPS/
 │   │   ├── 1.7.3 time_drift_monitor.py
 │   │   ├── 1.7.4 time_sync_engine.py
 │   ├── 1.8 __init__.py
-│   ├── 1.9 validation.py            # تحقق بيانات رئيسي للقسم
-│   ├── 1.10 api_interface.py        # واجهة برمجية للتكامل مع الأقسام الأخرى
-│   ├── 1.11 event_bus.py            # نظام أحداث داخلي لتبادل الإشعارات والبيانات
-│   ├── 1.12 integration_protocols/  # بروتوكولات التكامل مع الأنظمة الخارجية
+│   ├── 1.9 validation.py            # Main data validation for the section
+│   ├── 1.10 api_interface.py        # API interface for integration with other sections
+│   ├── 1.11 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 1.12 integration_protocols/  # Integration protocols with external systems
 │   │   ├── 1.12.1 rest_api_protocol.py
 │   │   ├── 1.12.2 websocket_protocol.py
 │   │   ├── 1.12.3 custom_integration_adapter.py
-│   ├── 1.13 monitoring.py           # مراقبة أداء القسم وتسجيل الأحداث
-│   ├── 1.14 extensibility.md        # توثيق نقاط التوسع والتكامل مع الأقسام الأخرى
-│   # تم إضافة ملفات ونقاط تكامل عملية لزيادة قابلية التوسع والتكامل مع باقي النظام
+│   ├── 1.13 monitoring.py           # Section performance monitoring and event logging
+│   ├── 1.14 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to increase scalability and integration with the rest of the system
 │
 ├── 2. External Factors Integration/
 │   ├── 2.1 BlockchainAndOnChainAnalytics/
@@ -78,17 +78,17 @@ MDPS/
 │   ├── 2.5 TimeWeightedEventImpactModel/
 │   │   ├── 2.5.1 EventImpactTimeDecayModel.py
 │   │   ├── 2.5.2 ImpactWeightCalculator.py
-│   ├── 2.6 data_manager.py          # إدارة بيانات محلية للقسم
-│   ├── 2.7 validation.py            # تحقق بيانات محلي للقسم
-│   ├── 2.8 api_interface.py         # واجهة برمجية للتكامل مع باقي النظام
-│   ├── 2.9 event_bus.py             # نظام أحداث داخلي لتبادل الإشعارات والبيانات
-│   ├── 2.10 integration_protocols/  # بروتوكولات التكامل مع الأنظمة الخارجية
+│   ├── 2.6 data_manager.py          # Local data management for the section
+│   ├── 2.7 validation.py            # Local data validation for the section
+│   ├── 2.8 api_interface.py         # API interface for integration with the rest of the system
+│   ├── 2.9 event_bus.py             # Internal event bus for notifications and data exchange
+│   ├── 2.10 integration_protocols/  # Integration protocols with external systems
 │   │   ├── 2.10.1 rest_api_protocol.py
 │   │   ├── 2.10.2 websocket_protocol.py
 │   │   ├── 2.10.3 custom_integration_adapter.py
-│   ├── 2.11 monitoring.py           # مراقبة أداء القسم وتسجيل الأحداث
-│   ├── 2.12 extensibility.md        # توثيق نقاط التوسع والتكامل مع الأقسام الأخرى
-│   # تم إضافة ملفات ونقاط تكامل عملية لرفع كفاءة القسم وزيادة قابلية التوسع والتكامل مع باقي النظام
+│   ├── 2.11 monitoring.py           # Section performance monitoring and event logging
+│   ├── 2.12 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │   └── 2.13 @integration.py
 │
 ├── 3. Data Cleaning & Signal Processing/
@@ -102,8 +102,17 @@ MDPS/
 │   ├── 3.8 main.py
 │   ├── 3.9 noise_signal_treatment.py
 │   ├── 3.10 temporal_structural_alignment.py
-│   ├── 3.11 data_manager.py         # إدارة بيانات محلية للقسم
-│   ├── 3.12 validation.py           # تحقق بيانات محلي للقسم
+│   ├── 3.11 data_manager.py         # Local data management for the section
+│   ├── 3.12 validation.py           # Local data validation for the section
+│   ├── 3.13 api_interface.py        # API interface for integration with the rest of the system
+│   ├── 3.14 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 3.15 integration_protocols/  # Integration protocols with external systems
+│   │   ├── 3.15.1 rest_api_protocol.py
+│   │   ├── 3.15.2 websocket_protocol.py
+│   │   ├── 3.15.3 custom_integration_adapter.py
+│   ├── 3.16 monitoring.py           # Section performance monitoring and event logging
+│   ├── 3.17 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 4. Preprocessing & Feature Engineering/
 │   ├── 4.1 indicators/
@@ -160,8 +169,17 @@ MDPS/
 │   │   ├── 4.7.3 auto_feature_selector.py
 │   ├── 4.8 feature_monitoring.py
 │   ├── 4.9 __init__.py
-│   ├── 4.10 data_manager.py         # إدارة بيانات محلية للقسم
-│   ├── 4.11 validation.py           # تحقق بيانات محلي للقسم
+│   ├── 4.10 data_manager.py         # Local data management for the section
+│   ├── 4.11 validation.py           # Local data validation for the section
+│   ├── 4.12 api_interface.py        # API interface for integration with the rest of the system
+│   ├── 4.13 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 4.14 integration_protocols/  # Integration protocols with external systems
+│   │   ├── 4.14.1 rest_api_protocol.py
+│   │   ├── 4.14.2 websocket_protocol.py
+│   │   ├── 4.14.3 custom_integration_adapter.py
+│   ├── 4.15 monitoring.py           # Section performance monitoring and event logging
+│   ├── 4.16 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 5. Market_Context_Structural_Analysis/
 │   ├── 5.1 key_zones_levels/
@@ -185,8 +203,17 @@ MDPS/
 │   │   ├── 5.4.5 swing_high_low_labeler.py
 │   │   ├── 5.4.6 trendline_channel_mapper.py
 │   ├── 5.5 __init__.py
-│   ├── 5.6 data_manager.py          # إدارة بيانات محلية للقسم
-│   ├── 5.7 validation.py            # تحقق بيانات محلي للقسم
+│   ├── 5.6 data_manager.py          # Local data management for the section
+│   ├── 5.7 validation.py            # Local data validation for the section
+│   ├── 5.8 api_interface.py        # API interface for integration with the rest of the system
+│   ├── 5.9 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 5.10 integration_protocols/ # Integration protocols with external systems
+│   │   ├── 5.10.1 rest_api_protocol.py
+│   │   ├── 5.10.2 websocket_protocol.py
+│   │   ├── 5.10.3 custom_integration_adapter.py
+│   ├── 5.11 monitoring.py          # Section performance monitoring and event logging
+│   ├── 5.12 extensibility.md       # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 6. Advanced Chart Analysis Tools/
 │   ├── 6.1 advanced_indicators/
@@ -226,8 +253,17 @@ MDPS/
 │   │   ├── 6.8.4 support_resistance_finder.py
 │   │   ├── 6.8.5 volume_profile_mapper.py
 │   ├── 6.9 __init__.py
-│   ├── 6.10 data_manager.py         # إدارة بيانات محلية للقسم
-│   ├── 6.11 validation.py           # تحقق بيانات محلي للقسم
+│   ├── 6.10 data_manager.py         # Local data management for the section
+│   ├── 6.11 validation.py           # Local data validation for the section
+│   ├── 6.12 api_interface.py        # API interface for integration with the rest of the system
+│   ├── 6.13 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 6.14 integration_protocols/  # Integration protocols with external systems
+│   │   ├── 6.14.1 rest_api_protocol.py
+│   │   ├── 6.14.2 websocket_protocol.py
+│   │   ├── 6.14.3 custom_integration_adapter.py
+│   ├── 6.15 monitoring.py           # Section performance monitoring and event logging
+│   ├── 6.16 extensibility.md        # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 7. Labeling & Target Engineering/
 │   ├── 7.1 label_quality_assessment/
@@ -244,8 +280,17 @@ MDPS/
 │   │   ├── 7.3.3 profit_zone_tagger.py
 │   │   ├── 7.3.4 risk_reward_labeler.py
 │   ├── 7.4 __init__.py
-│   ├── 7.5 data_manager.py          # إدارة بيانات محلية للقسم
-│   ├── 7.6 validation.py            # تحقق بيانات محلي للقسم
+│   ├── 7.5 data_manager.py          # Local data management for the section
+│   ├── 7.6 validation.py            # Local data validation for the section
+│   ├── 7.7 api_interface.py        # API interface for integration with the rest of the system
+│   ├── 7.8 event_bus.py            # Internal event bus for notifications and data exchange
+│   ├── 7.9 integration_protocols/  # Integration protocols with external systems
+│   │   ├── 7.9.1 rest_api_protocol.py
+│   │   ├── 7.9.2 websocket_protocol.py
+│   │   ├── 7.9.3 custom_integration_adapter.py
+│   ├── 7.10 monitoring.py          # Section performance monitoring and event logging
+│   ├── 7.11 extensibility.md       # Documentation of extensibility and integration points with other sections
+│   # Practical integration and extensibility files added to improve section efficiency and increase scalability and integration with the rest of the system
 │
 ├── 8. Prediction Engine (MLDL Models)/
 │   ├── 8.1 cnn_models/
@@ -288,8 +333,28 @@ MDPS/
 │   │   ├── 8.8.1 meta_learner_optimizer.py
 │   │   ├── 8.8.2 transformer_integrator.py
 │   ├── 8.9 __init__.py
-│   ├── 8.10 data_manager.py         # إدارة بيانات محلية للقسم
-│   ├── 8.11 validation.py           # تحقق بيانات محلي للقسم
+│   ├── 8.10 data_manager.py         # Local data management for the section
+│   ├── 8.11 validation.py           # Local data validation for the section
+│   ├── 8.12 api_interface.py        # Advanced API interface for integration with the rest of the system (model and result exchange support)
+│   ├── 8.13 event_bus.py            # Internal event bus for notifications and data exchange between modeling and training units
+│   ├── 8.14 integration_protocols/  # Integration protocols with external systems or AI platforms
+│   │   ├── 8.14.1 rest_api_protocol.py
+│   │   ├── 8.14.2 websocket_protocol.py
+│   │   ├── 8.14.3 custom_integration_adapter.py
+│   │   ├── 8.14.4 mlflow_adapter.py           # Integration with model and experiment tracking systems
+│   │   ├── 8.14.5 cloud_model_serving.py      # Integration with cloud model serving platforms
+│   │   ├── 8.14.6 distributed_training_adapter.py # Distributed training support
+│   ├── 8.15 monitoring.py           # Model and training performance monitoring and event logging (drift tracking support)
+│   ├── 8.16 extensibility.md        # Documentation of extensibility and integration points with other sections (support for adding new models, integration protocols, etc.)
+│   ├── 8.17 model_registry.py       # Model registry management and version documentation
+│   ├── 8.18 experiment_tracker.py   # Experiment and training metric tracking
+│   ├── 8.19 resource_manager.py     # Compute resource management (GPU/TPU/CPU) and allocation for training and deployment
+│   ├── 8.20 model_security.py       # Model security monitoring, data protection, and attack detection
+│   ├── 8.21 model_testing.py        # Automated model testing before deployment (performance, stability, result validation)
+│   ├── 8.22 big_data_adapter.py     # Integration with big data management platforms like Hadoop/Spark
+│   ├── 8.23 governance.md           # Documentation of model management policies, approvals, and version control
+│   # Added resource management, security, testing, big data integration, and governance modules to support advanced use cases and improve section efficiency
+│   # Added advanced integration and extensibility files to support scalability, integration, model deployment, and distributed training, with performance and experiment monitoring support
 │
 ├── 9. Strategy & Decision Layer/
 │   ├── 9.1 risk_management/
@@ -321,8 +386,24 @@ MDPS/
 │   │   ├── 9.5.2 timing_optimizer.py
 │   ├── 9.6 main.py
 │   ├── 9.7 __init__.py
-│   ├── 9.8 data_manager.py          # إدارة بيانات محلية للقسم
-│   ├── 9.9 validation.py            # تحقق بيانات محلي للقسم
+│   ├── 9.8 data_manager.py          # Local data management for the section
+│   ├── 9.9 validation.py            # Local data validation for the section
+│   ├── 9.10 strategy_manager.py         # Dynamic strategy management (load, update, activate at runtime)
+│   ├── 9.11 monitoring.py               # Strategy performance monitoring and result/drift analysis
+│   ├── 9.12 feedback_analyzer.py        # Trade result analysis and feedback for self-improvement
+│   ├── 9.13 integration_protocols/      # Integration protocols with external trading platforms or risk management systems
+│   │   ├── 9.13.1 rest_api_protocol.py
+│   │   ├── 9.13.2 websocket_protocol.py
+│   │   ├── 9.13.3 custom_integration_adapter.py
+│   ├── 9.14 resource_manager.py         # Resource allocation management between different strategies
+│   ├── 9.15 advanced_risk_manager.py    # Advanced risk management models (VaR, Stress Testing)
+│   ├── 9.16 strategy_testing.py         # Automated strategy testing before activation
+│   ├── 9.17 scenario_simulator.py       # Market scenario simulation and strategy testing
+│   ├── 9.18 extensibility.md            # Documentation of extensibility and adding new strategies or protocols
+│   ├── 9.19 governance.md               # Documentation of strategy management policies, approvals, and version control
+│   ├── 9.20 event_bus.py                # Advanced internal event bus for notifications and data exchange
+│   ├── 9.21 api_interface.py            # Advanced API interface for integration and signal exchange with the rest of the system
+│   # Added dynamic management, performance monitoring, external integration, advanced resource and risk management, automated testing, extensibility, governance, advanced event bus, and API interface to improve section efficiency and scalability
 │
 ├── 10. trading_ui/   ← System UI
 │   ├── 10.1 config/                        # UI configuration files
@@ -358,7 +439,7 @@ MDPS/
 │   ├── 10.8 init.py                        # UI initialization
 │   ├── 10.9 main.py                        # UI entry point
 │   └── 10.10 requirements.txt               # UI dependencies
-│   # واجهة المستخدم تعتمد على البيانات من الأقسام الأخرى عبر واجهات التكامل فقط
+│   # The user interface relies on data from other sections only through integration interfaces
 │
 ├── 11. config.py      ← Central configuration
 ├── 12. main.py        ← Main entry point
@@ -367,15 +448,15 @@ MDPS/
 -├── 15. @database.py    ← Central data management
 -├── 16. @logging.py     ← Logging management
 -├── 17. @error_handling.py ← Error management
-│   # تم إلغاء وحدات الإدارة المركزية للبيانات والتحقق
+│   # Centralized data and validation management modules have been removed
 ├── 18. README.md      ← System documentation
 ├── 19. requirements.txt
 ├── 20. @tests/         ← System tests
 └── 21. setup.py
 ```
 
-ملاحظات:
-- كل قسم يحتوي الآن على ملفات إدارة بيانات (data_manager.py) وملفات تحقق بيانات (validation.py) خاصة به.
-- تم إلغاء وحدات الإدارة المركزية للبيانات والتحقق مثل @database.py و @logging.py و @error_handling.py.
-- واجهة المستخدم تعتمد فقط على واجهات التكامل مع الأقسام الأخرى ولا تدير البيانات بشكل مركزي.
-- يمكن إضافة بروتوكولات أو واجهات تكامل بين الأقسام عند الحاجة لتبادل البيانات.
+Notes:
+- Each section now contains its own data management (data_manager.py) and validation (validation.py) files.
+- Centralized data and validation management modules such as @database.py, @logging.py, and @error_handling.py have been removed.
+- The user interface relies only on integration interfaces with other sections and does not manage data centrally.
+- Integration protocols or interfaces can be added between sections as needed for data exchange.
