@@ -1019,38 +1019,72 @@ MDPS/
 │   │     • Output: API responses, data packets,
 │
 ├── 10. trading_ui/   ← System UI
-│   ├── 10.1 config/                        # UI configuration files
+│   ├── 10.1 config/
+│   │   ├── 10.1.1 ui_settings.py                  # Central UI settings (themes, language, user preferences)
+│   │   ├── 10.1.2 permissions.py                  # User roles and access control settings
+│   │   ├── 10.1.3 localization/                   # Translation files for multi-language support
+│   │   └── 10.1.4 README.md
 │   ├── 10.2 core/                          # Core logic and controllers
 │   │   ├── 10.2.1 data_manager.py            # Data management for UI
 │   │   ├── 10.2.2 event_system.py            # Event handling and communication
 │   │   ├── 10.2.3 market_data.py             # Market data processing for UI
 │   │   ├── 10.2.4 mdps_controller.py         # Connects UI to MDPS system
-│   │   └── 10.2.5 init.py
+│   │   ├── 10.2.5 init.py
+│   │   ├── 10.2.6 user_profile_manager.py         # Manage user profiles and preferences
+│   │   ├── 10.2.7 theme_manager.py                # Dynamic theme switching and customization
+│   │   ├── 10.2.8 permission_manager.py           # UI access control and permission checks
+│   │   ├── 10.2.9 error_manager.py                # Centralized error handling for UI
+│   │   ├── 10.2.10 feedback_manager.py             # Collect and manage user feedback
+│   │   └── 10.2.11 README.md 
 │   ├── 10.3 data/                          # Data storage and models
 │   │   ├── 10.3.1 cache.py                   # Data caching
 │   │   ├── 10.3.2 database.py                # UI database management
 │   │   ├── 10.3.3 models/                    # Data models for UI
-│   │   └── 10.3.4 init.py
+│   │   ├── 10.3.4user_data.py                    # User-specific data storage
+│   │   ├── 10.3.5 README.md 
+│   │   └── 10.3.6 init.py
 │   ├── 10.4 services/
-│   │   ├── data_service.py                  # Service for fetching and updating data from MDPS system and external providers
-│   │   ├── notification_service.py          # Service for managing notifications and alerts in the UI
-│   │   ├── trading_service.py               # Service for executing trading operations and sending orders
-│   │   ├── external_data_provider_service.py# Service for managing connections and communication with external data sources (MT5, APIs, news feeds)
-│   │   ├── configuration_service.py         # Service for handling configuration settings (API keys, endpoints, intervals)
-│   │   ├── connection_test_service.py       # Service for testing and diagnosing external data source connections
-│   │   ├── log_service.py                   # Service for collecting and providing system and provider logs to the UI
-│   │   ├── module_control_service.py        # Service for enabling/disabling modules and adjusting parameters
-│   │   ├── monitoring_service.py            # Service for system health, performance, and resource monitoring
-│   │   ├── integration_status_service.py    # Service for tracking integration and API status
-│   │   ├── manual_override_service.py       # Service for manual override and emergency controls
-│   │   └── init.py
+│   │   ├── 10.4.1 data_service.py                  # Service for fetching and updating data from MDPS system and external providers
+│   │   ├── 10.4.2 notification_service.py          # Service for managing notifications and alerts in the UI
+│   │   ├── 10.4.3 trading_service.py               # Service for executing trading operations and sending orders
+│   │   ├── 10.4.4 external_data_provider_service.py# Service for managing connections and communication with external data sources (MT5, APIs, news feeds)
+│   │   ├── 10.4.5 configuration_service.py         # Service for handling configuration settings (API keys, endpoints, intervals)
+│   │   ├── 10.4.6 connection_test_service.py       # Service for testing and diagnosing external data source connections
+│   │   ├── 10.4.7 log_service.py                   # Service for collecting and providing system and provider logs to the UI
+│   │   ├── 10.4.8 module_control_service.py        # Service for enabling/disabling modules and adjusting parameters
+│   │   ├── 10.4.9 monitoring_service.py            # Service for system health, performance, and resource monitoring
+│   │   ├── 10.4.10 integration_status_service.py    # Service for tracking integration and API status
+│   │   ├── 10.4.11 manual_override_service.py       # Service for manual override and emergency controls
+│   │   ├── 10.4.12 documentation_service.py        # Service for accessing UI and API documentation
+│   │   ├── 10.4.13 backup_service.py               # UI backup and restore operations
+│   │   ├── 10.4.14 resource_manager_service.py     # UI resource allocation and monitoring
+│   │   ├── 10.4.15 README.md
+│   │   └── 10.4.16 init.py
 │   │
 │   ├── 10.5 tests/                         # UI tests
+│   │   ├── 10.5.1 ui_unit_tests.py                # UI unit tests
+│   │   ├── 10.5.2 ui_integration_tests.py         # UI integration tests
+│   │   ├── 10.5.3 ui_access_control_tests.py      # Permission and access tests
+│   │   └── 10.5.4 README.md
 │   ├── 10.6 ui/                            # UI components and views
 │   │   ├── 10.6.1 main_window.py             # Main application window
 │   │   ├── 10.6.2 resources/                 # UI resources (icons, images)
-│   │   ├── 10.6.3 utils/                     # UI helper functions
-│   │   ├── 10.6.4 views/
+│   |   ├── 10.6.3 utils/
+│   │   │   ├── formatting_utils.py            # Functions for formatting numbers, dates, strings in UI
+│   │   │   ├── conversion_utils.py            # Helpers for converting data types and units for display
+│   │   │   ├── ui_state_utils.py              # Utilities for managing UI state and persistence
+│   │   │   ├── theme_utils.py                 # Helpers for dynamic theme switching (dark/light mode)
+│   │   │   ├── validation_utils.py            # Functions for validating user input in UI forms
+│   │   │   ├── error_handler.py               # Error handling and message display for UI components
+│   │   │   ├── api_utils.py                   # Helpers for API requests and response formatting in UI
+│   │   │   ├── config_utils.py                # Utilities for loading/saving UI configuration
+│   │   │   ├── threading_utils.py             # Helpers for async tasks and thread management in UI
+│   │   │   ├── file_utils.py                  # Functions for file dialogs, saving/loading files from UI
+│   │   │   ├── encryption_utils.py            # Utilities for encrypting sensitive UI data (API keys, credentials)
+│   │   │   ├── localization_utils.py          # Helpers for multi-language/localization support in UI
+│   │   │   ├── test_utils.py                  # Utilities for UI unit and integration testing
+│   │   │   └── init.py                        #
+│   |   ├── 10.6.4 views/
 │   │   │   ├── control_panel_window.py
 │   │   │   │     • Displays:
 │   │   │   │         - System status overview
@@ -1155,25 +1189,44 @@ MDPS/
 │   │   │   │         - Connection status
 │   │   │   │         - Error messages
 │   │   │   │         - Data packetsviews/pages
-│   ├── 10.6.5 widgets/
-│   │   ├── external_data_provider_widget.py         # Widget for managing and configuring external data sources (MT5, APIs, news feeds)
-│   │   ├── system_tools_widget.py                   # Widget for controlling system modules and tools
-│   │   ├── status_overview_widget.py                # Widget for displaying system status and health
-│   │   ├── log_viewer_widget.py                     # Widget for viewing real-time logs and notifications
-│   │   ├── connection_test_widget.py                # Widget for testing and diagnosing data source connections
-│   │   ├── error_status_widget.py                   # Widget for displaying error and status logs for providers
-│   │   ├── configuration_form_widget.py             # Widget for entering API keys, credentials, endpoints, and update intervals
-│   │   ├── module_control_widget.py                 # Widget for enabling/disabling modules and adjusting parameters
-│   │   ├── manual_override_widget.py                # Widget for manual override and emergency controls
-│   │   ├── monitoring_dashboard_widget.py           # Widget for system monitoring and performance metrics
-│   │   ├── notification_widget.py                   # Widget for alerts and notifications
-│   │   ├── integration_status_widget.py             # Widget for displaying integration and API(tables, buttons)
-│   │   └── 10.6.6 init.py
-│   ├── 10.7 utils/                         # General utilities for UI
-│   │   ├── 10.7.1 constants.py               # UI constants
-│   │   ├── 10.7.2 helpers.py                 # Helper functions
-│   │   ├── 10.7.3 logger.py                  # Logging for UI
-│   │   └── 10.7.4 init.py
+│   │   ├── 10.6.5 widgets/
+│   │   │   ├── 10.6.1 external_data_provider_widget.py         # Widget for managing and configuring external data sources (MT5, APIs, news feeds)
+│   │   │   ├── 10.6.2 system_tools_widget.py                   # Widget for controlling system modules and tools
+│   │   │   ├── 10.6.3 status_overview_widget.py                # Widget for displaying system status and health
+│   │   │   ├── 10.6.4 log_viewer_widget.py                     # Widget for viewing real-time logs and notifications
+│   │   │   ├── 10.6.5 connection_test_widget.py                # Widget for testing and diagnosing data source connections
+│   │   │   ├── 10.6.6 error_status_widget.py                   # Widget for displaying error and status logs for providers
+│   │   │   ├── 10.6.7 configuration_form_widget.py             # Widget for entering API keys, credentials, endpoints, and update intervals
+│   │   │   ├── 10.6.8 module_control_widget.py                 # Widget for enabling/disabling modules and adjusting parameters
+│   │   │   ├── 10.6.9 manual_override_widget.py                # Widget for manual override and emergency controls
+│   │   │   ├── 10.6.10 monitoring_dashboard_widget.py           # Widget for system monitoring and performance metrics
+│   │   │   ├── 10.6.11 notification_widget.py                   # Widget for alerts and notifications
+│   │   │   ├── 10.6.12 integration_status_widget.py             # Widget for displaying integration and API(tables, buttons)
+│   │   │   ├── 10.6.13 init.py
+│   │   │   ├── 10.6.14 user_profile_widget.py              # Widget for user profile management
+│   │   │   ├── 10.6.15 theme_switcher_widget.py            # Widget for theme customization
+│   │   │   ├── 10.6.16 feedback_widget.py                  # Widget for user feedback submission
+│   │   │   ├── 10.6.17 permission_widget.py                # Widget for managing user permissions
+│   │   │   ├── 10.6.18 error_display_widget.py             # Widget for centralized error display
+│   │   │   ├── 10.6.19 localization_widget.py              # Widget for language selection
+│   │   │   └── 10.6.20 documentation_widget.py 
+│   ├── 10.7 utils/
+│   │   ├── 10.7.1 constants.py               # UI constants (colors, fonts, sizes, etc.)
+│   │   ├── 10.7.2 helpers.py                 # Helper functions (formatting, conversions, etc.)
+│   │   ├── 10.7.3 logger.py                  # Logging for UI actions and errors
+│   │   ├── 10.7.4 init.py                    # Initialization for utils
+│   │   ├── 10.7.5 validation_utils.py        # Utility functions for validating user input and UI forms
+│   │   ├── 10.7.6 error_handler.py           # Utility for handling UI errors and displaying messages
+│   │   ├── 10.7.7 api_utils.py               # Helpers for API requests, responses, and formatting
+│   │   ├── 10.7.8 config_utils.py            # Utilities for loading and saving UI configuration
+│   │   ├── 10.7.9 threading_utils.py         # Utilities for managing threads and async UI tasks
+│   │   ├── 10.7.10 file_utils.py             # Helpers for file dialogs, saving/loading files
+│   │   ├── 10.7.11 encryption_utils.py       # Utilities for encrypting sensitive UI data (API keys, credentials)
+│   │   ├── 10.7.12 localization_utils.py     # Helpers for multi-language/localization support
+│   │   ├── 10.7.13 test_utils.py             # Utilities for UI
+│   │   ├── 10.7.14 backup_utils.py                 # Utilities for UI backup/restore
+│   │   ├── 10.7.15 resource_utils.py               # Utilities for resource management
+│   │   ├── 10.7.16 feedback_utils.py 
 │   ├── 10.8 init.py                        # UI initialization
 │   ├── 10.9 main.py                        # UI entry point
 │   └── 10.10 requirements.txt               # UI dependencies
@@ -1183,16 +1236,15 @@ MDPS/
 ├── 12. main.py        ← Main entry point
 ├── 13. run_mdps.py    ← System runner script
 ├── 14. @orchestrator.py ← Tools orchestrator
--├── 15. @database.py    ← Central data management
--├── 16. @logging.py     ← Logging management
--├── 17. @error_handling.py ← Error management
+├── 15. @database.py    ← Central data management
+├── 16. @logging.py     ← Logging management
+├── 17. @error_handling.py ← Error management
 │   # Centralized data and validation management modules have been removed
 ├── 18. README.md      ← System documentation
 ├── 19. requirements.txt
 ├── 20. @tests/         ← System tests
 └── 21. setup.py
 ```
-
 Notes:
 - Each section now contains its own data management (data_manager.py) and validation (validation.py) files.
 - Centralized data and validation management modules such as @database.py, @logging.py, and @error_handling.py have been removed.
