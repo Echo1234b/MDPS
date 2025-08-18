@@ -3,6 +3,10 @@
 #
 # Full version of the diagram with decentralized data and validation management inside each section, and removal of central management.
 
+Implementation note:
+- The repository has been restructured into a Python package `mdps/` that dynamically links to existing section implementations whose folders contain spaces (e.g., `Data Cleaning & Signal Processing`). This preserves the detailed module breakdown while providing a clean, importable entrypoint `python -m mdps`.
+- Legacy modules have been retained and are referenced; unnecessary duplicates and non-Python placeholders will be pruned progressively.
+
 ```
 MDPS/
 │

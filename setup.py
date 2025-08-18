@@ -89,6 +89,7 @@ def main():
     print("\nTo start the system:")
     print("1. Configure your .env file with your credentials")
     print("2. Run 'python -m mdps' to start the system")
+    print("   or 'python run_mdps.py' for a single-cycle run")
 
 if __name__ == "__main__":
     main()
