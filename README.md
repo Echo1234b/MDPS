@@ -56,6 +56,10 @@
 
 3. **Launch MDPS**
    ```bash
+   # Preferred unified entrypoint
+   python -m mdps
+
+   # Or legacy UI launcher
    python launch_mdps.py
    ```
 
@@ -324,26 +328,23 @@ logging.basicConfig(level=logging.DEBUG)
 
 ### Project Structure
 ```
-mdps/
-├── launch_mdps.py              # Enhanced main launcher
-├── main.py                     # Core MDPS system
-├── config.py                   # Configuration management
-├── requirements.txt            # Dependencies
-├── trading_ui/                 # PyQt interface
-│   ├── ui/
-│   │   ├── main_window.py      # Main application window
-│   │   ├── views/              # UI views
-│   │   ├── widgets/            # Custom widgets
-│   │   └── resources/          # UI resources
-│   ├── core/                   # Core UI components
-│   │   ├── mdps_controller.py  # MDPS integration
-│   │   ├── event_system.py     # Event handling
-│   │   └── data_manager.py     # Data management
-│   └── services/               # Background services
-├── Data_Collection_Acquisition/# Data collection modules
-├── Prediction Engine/          # ML models and prediction
-├── Strategy_Decision_Layer/    # Trading strategies
-└── docs/                       # Documentation
+repo-root/
+├── mdps/
+│   ├── __init__.py         # Aggregates all MDPS sections
+│   ├── __main__.py         # python -m mdps entrypoint
+│   └── main.py             # Pipeline driver
+├── config.py               # Root configuration (reused)
+├── run_mdps.py             # Convenience runner
+├── launch_mdps.py          # PyQt UI launcher
+├── trading_ui/             # PyQt interface (unchanged)
+├── Data_Collection_and_Acquisition/
+├── Data Cleaning & Signal Processing/
+├── Preprocessing & Feature Engineering/
+├── Advanced Chart Analysis Tools/
+├── Market_Context_Structural_Analysis/
+├── Labeling & Target Engineering/
+├── Prediction Engine (MLDL Models)/
+└── Strategy & Decision Layer/
 ```
 
 ### Contributing
